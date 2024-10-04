@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import './FlipCard.css'
 
 const FlipCardContainer = styled.div`
   background-color: transparent;
@@ -43,20 +42,22 @@ const CardImage = styled.img`
   border-radius: 8px;
 `;
 
-export default function FlipCard({card}) {
+export default function FlipCard({card, handleChoice}) {
   const [isFlipped, setIsFlipped] = useState(false);
 
   const handleClick = () => {
     setIsFlipped(!isFlipped);
+    handleChoice(card)
   };
 
   return (
-    <FlipCardContainer onClick={handleClick}>
+    <FlipCardContainer>
       <FlipCardInner isFlipped={isFlipped}>
         <FlipCardBack>
           <CardImage
             src="/img/card-back.png"
             alt="Card Back"
+            onClick={handleClick}
           />
         </FlipCardBack>
         <FlipCardFront>
