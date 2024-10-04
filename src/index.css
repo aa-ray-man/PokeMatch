@@ -6,6 +6,13 @@ body {
   margin: 0;
   font-size: 1.5em;
   text-align: center;
-  background: #1b1523;
-  color: #fff;
+  /* background: rgb(25, 38, 83); */
+  background: radial-gradient(circle,rgb(0, 201, 181), rgb(25, 38, 83));
+  color: #ffcb03;
+  overflow: hidden;  /*Hide the scrollbar completely*/
+  overflow-y: scroll;  /*Still allow scrolling*/
+}
+
+body::-webkit-scrollbar { 
+  display: none;  /*This hides the scrollbar in webkit browsers*/
 }
