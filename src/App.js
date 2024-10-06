@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import './App.css';
-import FlipCard from './components/FlipCard';
+import SingleCard from './components/SingleCard';
 
 const cardImages = [
   {"src": "/img/charmander.png", matched: false},
@@ -41,7 +41,7 @@ function App() {
       if (choiceOne.src === choiceTwo.src){
         
         setCards(prevCards => {
-          prevCards.map(card => {
+          return  prevCards.map(card => {
             if (card.src === choiceOne.src){
               return {...card, matched: true}
             }else {
@@ -53,8 +53,7 @@ function App() {
         resetTurn()
         
       }else {
-        console.log("cards dont match")
-        resetTurn()
+        setTimeout(() => resetTurn(), 1000)
       }
     }
   }, [choiceOne, choiceTwo])
@@ -74,7 +73,11 @@ function App() {
 
       <div className='card-grid'>
         {cards.map((card) => (
-          <FlipCard key={card.id} card={card} handleChoice={handleChoice} />
+          <SingleCard
+          key={card.id} 
+          card={card} 
+          handleChoice={handleChoice}
+          flipped= {card === choiceOne || card === choiceTwo || card.matched} />
         ))}
       </div>
 
